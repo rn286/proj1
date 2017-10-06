@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<title>CSV File Upload/Print Project</title>
+<body style="background-color:#E6E6FA">
+
+<style>
+div {height:150px;padding:20px;width:33.58%;}
+th {background-color:white;}
+p.monospace {
+    font-family: "Courier New", Courier, monospace;
+}
+</style>
+
+<div style="background-color:DarkCyan">
+<h1><p class="monospace">Project #1: File Upload and Print</p></h1>
+<h2><p class="monospace">Task #1: File Upload</p></h2>
+</div>
+
+<body>
+<table style="border:3px solid red">
+	<tr>
+		<th><img src="csvimage.png" height="60" width="60"></th>
+		<th><form action="fileupload.php" method="post" enctype="multipart/form-data">
+		<b>Select your <u>CSV</u> file to upload:</b>
+			<input type="file" name="fileToUpload" id="fileToUpload">
+			<input type="submit" value="Upload file" name="submit">
+			</form></th>
+
+</body>
+
+</html>
