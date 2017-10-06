@@ -3,7 +3,7 @@
 //ini_set(varname:'diplay_errors', newvalue:'0');
 //error_reporting(level:E_ALL);
 
-$target_dir = "UPLOADS/";
+$target_dir = "./UPLOADS/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $CSVFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -22,12 +22,12 @@ if($CSVFileType != "csv" ) {
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Your file was not uploaded. Please try again.";
-// if everything is ok, try to upload file
+// if everything is ok the CSV file will be uploaded
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        echo "The file '". basename( $_FILES["fileToUpload"]["name"]). "' has been uploaded.";
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo "Sorry, there was an error uploading your file. Try again.";
     }
 }
 ?>
