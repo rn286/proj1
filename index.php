@@ -35,22 +35,19 @@
 		font-family: "Courier New", Courier, monospace;
 	}
 	
-	table.box {
-			border: 3px solid red;
-			width: 200px;
+	tr.box {
+			width: 400px;
 			background-color: white;
     }
 
-	form {
-		margin: 0;
-    }
+	
 </style>
 </head>
-
+v2
 <?php
 If (isset($_GET[“error”])) {
-	echo '<div class=”error”>There was an error. Please try again.</div>';  
-	//echo "There was an error";
+	echo '<div class=”error”>There was an error. Please try again.</div>'; //reminder - I need to test this still 10.9.2017
+	//echo "There was an error"; //plan b if above div class doesn't work. 
 	}
 ?>
 
@@ -61,8 +58,8 @@ If (isset($_GET[“error”])) {
     <h2>Task #1: File Upload</h2>
 </div>
 
-<table class=”box” align=”center”>
-<tr>
+<table>
+<tr class="box">
     <td>
 		<img src="csvimage.png" height="100" width="100"/>
 	</td>
@@ -75,8 +72,9 @@ If (isset($_GET[“error”])) {
 	</td>
 </tr>
 </table>
+
 <br>
 <h3>Only CSV files are permitted</h3>
-
+<hr>
 </body>
 </html>
