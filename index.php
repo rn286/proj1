@@ -43,13 +43,7 @@
 	
 </style>
 </head>
-v2
-<?php
-If (isset($_GET[“error”])) {
-	echo '<div class=”error”>There was an error. Please try again.</div>'; //reminder - I need to test this still 10.9.2017
-	//echo "There was an error"; //plan b if above div class doesn't work. 
-	}
-?>
+v3
 
 <body>
 
@@ -66,8 +60,8 @@ If (isset($_GET[“error”])) {
     <td>
 		<form action="fileupload.php" method="post" enctype="multipart/form-data">
         <b>Select your <u>CSV</u> file to upload:</b>
-        <input type="file" name="fileToUpload" />
-        <input type="submit" value="Upload file"/>
+        <input type="file" name="fileToUpload">
+        <input type="submit" value="Upload file">
 		</form>
 	</td>
 </tr>
