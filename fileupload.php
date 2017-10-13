@@ -1,13 +1,12 @@
-
 <?php
-// Version 3
+// Version 4
 //Project 1 part 2: 
 //This will perform multiple actions after the submit button is pushed
-//on index.php. Once the 3 checks are verified it will forward to the render.php
+//on index.php. Once the 3 checks are verified it will forward to printrender.php
 //page based on the header info. If any of the checks fail it will return back to
-//index.php with an error in the heading. 
+//index.php with an error. 
 
-ini_set('display_errors','1');  // Ask the Prof if this should be 1
+ini_set('display_errors','1');  // Ask the Prof if this should be 1. It shows the error on the page
 error_reporting(E_ALL);
 
 //Function called to send user back to try again 
@@ -16,7 +15,7 @@ function send_user_back() {
     exit;
 }
 
-$target_dir = "./UPLOADS/";
+$target_dir = "UPLOADS/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
 // Check #1 does a file with the same name already exists
@@ -32,8 +31,9 @@ if($file_type != "csv" ) {
 
 // Check #3 If move is ok then move from temp > UPLOADS
 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-		  header('location: printrender.php');
-	} else {
+	header("location:printrender.php?filename=$target_file");
+//	<a href=printrender.php?filename='news_decline.csv'</a>; //use for testing
+ } else {
         send_user_back();
  }	
 	

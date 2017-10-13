@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html>
+<!-- Version 4. Deployed to AFS server -->
 <head>
 
 <title>CSV File Upload/Print Project</title>
@@ -10,11 +10,7 @@
 
           background-color: #E6E6FA
     }
-	div.error {
-		  background-color: pink;
-		  color: red;
-		  padding: 20px;
-
+	
 	}
     div.heading {
 		  height:150px;
@@ -43,7 +39,7 @@
 	
 </style>
 </head>
-v3
+
 
 <body>
 
@@ -61,7 +57,7 @@ v3
 		<form action="fileupload.php" method="post" enctype="multipart/form-data">
         <b>Select your <u>CSV</u> file to upload:</b>
         <input type="file" name="fileToUpload">
-        <input type="submit" value="Upload file">
+        <input type="submit" value="Upload & Print File">
 		</form>
 	</td>
 </tr>
