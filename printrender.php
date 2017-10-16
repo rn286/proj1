@@ -1,5 +1,5 @@
 <html>
-<!-- Version 4. Deployed to AFS server -->
+<!-- Version 4.1. header format added - Deployed to AFS server -->
 <head>
 
 <title>CSV File Upload/Print Project</title>
@@ -19,7 +19,12 @@
 		border-collapse: collapse;
 		padding: 10px;
 		}
-
+	th {
+		background-color:#000;color:white;
+		border: 1px solid black;
+		border-color:#FFFFFF;
+		padding: 10px;
+	}
 	tr {
 		font-family: "Courier New", Courier, monospace;	
 		}
@@ -29,18 +34,22 @@
 <?php
 $filename = $_REQUEST['filename'];
 echo "<h1>CSV Print Results</h1>";
-echo "<html><body><table>\n\n";
-$f = fopen("$filename", "r");
-while (($line = fgetcsv($f)) !== false) {
-        echo "<tr>";
-        foreach ($line as $cell) {
-                echo "<td>" . htmlspecialchars($cell) . "</td>";
-        }
-        echo "</tr>";
-}
-fclose($f);
-echo "\n</table></body></html>";
-echo "<h3>The end</h3>";
+
+    $f = fopen("$filename", "r");  
+    if ($f && ($line = fgetcsv ($f))) { 
+        $dom = new DOMDocument(); 
+        $table = $dom->appendChild ($dom->createElement ('table')); 
+        $tr = $table->appendChild ($dom->createElement ('tr')); 
+        
+		foreach ($line as $value) $tr->appendChild ($dom->createElement ('th'))->appendChild ($dom->createTextNode ($value)); 
+        while ($line = fgetcsv($f)) { 
+            $tr = $table->appendChild ($dom->createElement ('tr')); 
+            foreach ($line as $value) $tr->appendChild ($dom->createElement ('td'))->appendChild ($value == null ? $dom->createEntityReference ('nbsp') : $dom->createTextNode ($value)); 
+        } 
+        $dom->formatOutput = true; 
+        echo $dom->saveHTML(); 
+    } 
+  echo "<h3>The end</h3>";   
 
 ?>
 </body>
